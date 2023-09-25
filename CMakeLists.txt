@@ -14,7 +14,7 @@ set(SIZE arm-none-eabi-size)
 set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
 
 # project settings
-project(stm32-cmake-template C CXX ASM)
+project(roma-gateway-antenna C CXX ASM)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD 11)
 
@@ -22,6 +22,9 @@ set(CMAKE_C_STANDARD 11)
 #add_compile_definitions(ARM_MATH_CM4;ARM_MATH_MATRIX_CHECK;ARM_MATH_ROUNDING)
 #add_compile_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
 #add_link_options(-mfloat-abi=hard -mfpu=fpv4-sp-d16)
+
+include_directories(Library)
+include_directories(Library/rfm69)
 
 #Uncomment for software floating point
 #add_compile_options(-mfloat-abi=soft)
@@ -54,6 +57,8 @@ include_directories(Core/Inc Drivers/STM32L1xx_HAL_Driver/Inc Drivers/STM32L1xx_
 add_definitions(-DDEBUG -DUSE_HAL_DRIVER -DSTM32L151xBA)
 
 file(GLOB_RECURSE SOURCES "Core/*.*" "Drivers/*.*")
+file(GLOB_RECURSE LIBRARY_SOURCES FOLLOW_SYMLINKS
+        ${CMAKE_CURRENT_SOURCE_DIR}/Library/**/src/*.c)
 
 set(LINKER_SCRIPT ${CMAKE_SOURCE_DIR}/STM32L151C6TXA_FLASH.ld)
 
@@ -61,7 +66,7 @@ add_link_options(-Wl,-gc-sections,--print-memory-usage,-Map=${PROJECT_BINARY_DIR
 add_link_options(-mcpu=cortex-m3 -mthumb -mthumb-interwork --specs=nano.specs)
 add_link_options(-T ${LINKER_SCRIPT})
 
-add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LINKER_SCRIPT})
+add_executable(${PROJECT_NAME}.elf ${SOURCES} ${LIBRARY_SOURCES} ${LINKER_SCRIPT})
 
 set(HEX_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.hex)
 set(BIN_FILE ${PROJECT_BINARY_DIR}/${PROJECT_NAME}.bin)

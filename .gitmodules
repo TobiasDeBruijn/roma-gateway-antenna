@@ -1,0 +1,3 @@
+[submodule "Library/rfm69"]
+	path = Library/rfm69
+	url = git@github.com:TobiasDeBruijn/stm32-rfm69.git

@@ -32,11 +32,12 @@ extern "C" {
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "stm32l1xx_hal.h"
+#include "rfm69/include/rfm69.h"
 /* USER CODE END Includes */
 
 /* Exported types ------------------------------------------------------------*/
 /* USER CODE BEGIN ET */
-
+extern RFM69 RFM;
 /* USER CODE END ET */
 
 /* Exported constants --------------------------------------------------------*/
@@ -66,6 +67,8 @@ void SystemClock_Config(void);
 #define Programmer_DIO_GPIO_Port GPIOA
 #define Programmer_CLK_Pin GPIO_PIN_14
 #define Programmer_CLK_GPIO_Port GPIOA
+#define RFM69_NSS_Pin GPIO_PIN_15
+#define RFM69_NSS_GPIO_Port GPIOA
 #define Debug_LED_Pin GPIO_PIN_8
 #define Debug_LED_GPIO_Port GPIOB
 
