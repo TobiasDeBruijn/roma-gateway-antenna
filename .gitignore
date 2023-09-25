@@ -1,0 +1,8 @@
+.idea/
+cmake-*
+Debug/
+build/
+
+.mxproject
+.project
+.cproject

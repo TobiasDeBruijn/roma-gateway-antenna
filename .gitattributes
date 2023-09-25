@@ -1,0 +1,11 @@
+Drivers/** linguist-vendored
+
+Core/Startup/* linguist-vendored
+Core/Src/stm32l1xx_hal_msp.c linguist-vendored
+Core/Src/stm32l1xx_it.c linguist_vendored
+Core/Src/syscalls.c linguist-vendored
+Core/Src/sysmem.c linguist-vendored
+Core/Src/system_stm32l1xx.c linguist-vendored
+
+Core/Inc/stm32l1xx_hal_conf.h linguist-vendored
+Core/Inc/stm32l1xx_it.h linguist-vendored
